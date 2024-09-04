@@ -1,0 +1,38 @@
+<mat-sidenav-container>
+    <mat-sidenav fxHide.gt-sm #sidenav opened="false">
+        <mat-nav-list fxLayout="column" fxLayoutGap="1rem">
+            <a mat-list-item routerLink="/"><mat-icon>home</mat-icon>Home</a>
+            <a mat-list-item routerLink="/signup"><mat-icon>person</mat-icon>Sign up</a>
+            <a mat-list-item routerLink="/login" *ngIf="this.userService.currentUser == undefined"><mat-icon>input</mat-icon>Login</a>
+            <a mat-list-item routerLink="/login" *ngIf="this.userService.currentUser != undefined"><mat-icon>input</mat-icon>Logout</a>
+            <a mat-list-item routerLink="/shop"><mat-icon>store</mat-icon>Shop</a>
+            <a mat-list-item routerLink="/cart"><mat-icon>shopping_cart</mat-icon>Cart</a>
+            <a mat-list-item *ngIf="this.userService.currentUser != null" routerLink="/" (click)="openProfile(this.userService.currentUser.id)">
+                <mat-icon>person</mat-icon>{{ this.userService.currentUser.name }}
+            </a>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <mat-toolbar>
+            <div fxHide.gt-sm>
+                <button mat-button (click)="sidenav.toggle()"><mat-icon>list</mat-icon></button>
+            </div>
+
+            <div>
+                <a routerLink="/">Home</a>
+            </div>
+            <div fxFlex fxLayoutAlign="end" fxLayoutGap="15px" fxHide.xs>
+                <a routerLink="/signup">Sign up</a>
+                <a *ngIf="this.userService.currentUser == undefined" routerLink="/login">Login</a>
+                <a *ngIf="this.userService.currentUser != undefined" routerLink="/login">Logout</a>
+                <a routerLink="/shop">Shop</a>
+                <a class="cartIcon" routerLink="/cart"><mat-icon>shopping_cart</mat-icon></a>
+                <button *ngIf="this.userService.currentUser != null" mat-raised-button color="primary" 
+                    (click)="openProfile(this.userService.currentUser.id)">{{ this.userService.currentUser.name }} <mat-icon>person</mat-icon>
+                </button>
+            </div>
+        </mat-toolbar>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

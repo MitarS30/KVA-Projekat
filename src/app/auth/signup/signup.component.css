@@ -1,0 +1,35 @@
+section{
+    width:100%
+}
+
+mat-card{
+    margin-top: 4rem;
+    min-width: 50rem;
+    width: 50%;
+    border-radius: 16px;
+    padding-bottom: 30px;
+}
+
+mat-form-field {
+    width: 40rem;
+    margin-top: 2rem;
+}
+mat-checkbox{
+    margin-top: 1rem;
+}
+
+button{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+a {
+    font-size: 20px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+a:hover {
+    color:#e3e3e3
+}
+

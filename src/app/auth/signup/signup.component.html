@@ -1,0 +1,46 @@
+<section fxLayout="column" fxLayoutAlign="center center">
+    <mat-card>
+        <mat-card-content>
+            <form fxLayout="column" fxLayoutAlign="center center" #f="ngForm"
+                (ngSubmit)="onSubmit(f)">
+                <h1>Create an account</h1>
+
+                <mat-form-field>
+                    <input type="text" matInput placeholder="First and last name" name="name"  ngModel required="" #nameInput="ngModel">
+                    <mat-error *ngIf="nameInput.hasError('required')">Field should not be empty!</mat-error>
+                </mat-form-field>
+                <span color="warn" *ngIf="errorExists" color="warn">{{ errorNameText }}</span>
+
+                <mat-form-field>
+                    <input type="text" matInput placeholder="Phone number" name="phoneNum" ngModel required="" #phoneNumInput="ngModel">
+                    <mat-error *ngIf="phoneNumInput.hasError('required')">Field should not be empty!</mat-error>
+                </mat-form-field>
+                <span *ngIf="errorExists" color="warn">{{ errorPhoneNumText }}</span>
+
+                <mat-form-field>
+                    <input type="email" matInput placeholder="Email" name="email" email ngModel required="" #emailInput="ngModel">
+                    <mat-error *ngIf="emailInput.hasError('required')">Field should not be empty!</mat-error>
+                </mat-form-field>
+                <span *ngIf="errorExists" color="warn">{{ errorEmailText }}</span>
+
+                <mat-form-field>
+                    <input type="password" matInput placeholder="Your password" name="password" ngModel required="" #passInput="ngModel" minlength="8">
+                    <mat-hint align="end">{{ passInput.value?.length}} / 8</mat-hint>
+                </mat-form-field>
+                <span *ngIf="errorExists" color="warn">{{ errorPasswordText }}</span>
+
+                <mat-form-field>
+                    <input type="text" matInput placeholder="Address" name="address" ngModel required="" #addressInput="ngModel">
+                </mat-form-field>
+                <span *ngIf="errorExists" color="warn">{{ errorAddressText }}</span>
+
+                <mat-checkbox class="acceptance" color="primary" name="acceptance" #acceptInput="ngModel" ngModel required="">I accept the terms of conditions of use.</mat-checkbox>
+                <mat-label *ngIf="errorExists" color="warn">{{ errorAcceptanceText }}</mat-label>
+
+                <button type="submit" mat-raised-button color="warn">submit</button>
+                <mat-label *ngIf="errorExists" color="warn">{{ errorText }}</mat-label>
+                <a routerLink="/login">Go back to login.</a>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</section>
